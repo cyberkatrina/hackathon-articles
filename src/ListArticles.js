@@ -1,6 +1,6 @@
 import React from "react";
 import './ListArticles.css'
-import DisplayArticleCard from "./DisplayArticleCard"
+import DisplayArticleCard from "./DisplayArticleCard.js"
 
 
 function ListArticles (props) {
@@ -13,9 +13,10 @@ function ListArticles (props) {
         key={index}
         points={item.points}
         author={item.author}
-        dateCreated={item.created_at.slice(0, 10)}
+        createdAt={item.created_at.slice(0, 10)}
         url={item.url}
         title={item.title}
+        tags={item._tags}
         />
       })}
       </ol>
