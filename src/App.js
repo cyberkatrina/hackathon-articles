@@ -22,12 +22,14 @@ function App() {
   }
 
 
-  const filterSearch = (term) => {
-    console.log(term)
+  const filterSearch = () => {
+    console.log(searchTerm)
     return (item) => {
-      console.log(item)
-      if (item._tag.toLowerCase().includes(term.toLowerCase()) || item.author.toLowerCase().includes(term.toLowerCase()) || item.title.toLowerCase().includes(term.toLowerCase()) || item.created_at.toLowerCase().includes(term.toLowerCase())) {
-        console.log("made it")
+      if (item.author.toLowerCase().includes(searchTerm.toLowerCase()) || 
+      item.title.toLowerCase().includes(searchTerm.toLowerCase()) || 
+      item.created_at.slice(0, 10).toLowerCase().includes(searchTerm.toLowerCase()) ||
+      item.url.toLowerCase().includes(searchTerm.toLowerCase()) || 
+      item._tags[0].toLowerCase().includes(searchTerm.toLowerCase())) {
         return true
       }
       return false
@@ -42,8 +44,8 @@ function App() {
           <input type='text' value={searchTerm} onChange={handleChange} placeholder='search by tag, date, author, or title'></input>
         </form>
       {
-        searchTerm ?
-        <ListArticles articles={articles.filter(filterSearch(searchTerm))}/> :
+        searchTerm != "" ?
+        <ListArticles articles={articles.filter(filterSearch())}/> :
         <ListArticles articles={articles}/>
       }
       </header>
