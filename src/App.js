@@ -1,17 +1,17 @@
 import logo from './logo.svg';
 import './App.css';
 import React, { useState, useEffect} from 'react';
-// import ListArticles from './ListArticles';
+import ListArticles from './ListArticles';
 
 function App() {
 
   const [articles, setArticles] = useState([]);
 
   useEffect(() => {
-    fetch('http://hn.algolia.com/api/v1/items/3')
+    fetch('https://hn.algolia.com/api/v1/search?query=react')
         .then(response => {
           return response.json()
-       }).then(arrayOfArticles => setArticles(arrayOfArticles))
+       }).then(arrayOfArticles => setArticles(arrayOfArticles.hits))
        .catch(error => console.error('Error fetching users:', error));
   }, []);
 
@@ -21,7 +21,6 @@ function App() {
       <header className="App-header">
         <ListArticles
         articles = {articles}
-
         />
       </header>
     </div>
