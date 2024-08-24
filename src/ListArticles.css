@@ -2,3 +2,34 @@
   margin: 0;
   width: 100vw;
 }
+
+ol {
+  padding-inline-start: 0px;
+}
+
+#header {
+  display: flex;
+  flex-direction: row;
+  position: relative;
+  padding-bottom: 5vh;
+}
+
+p {
+  position: absolute;
+}
+
+#points {
+  left: 1vw;
+}
+#title {
+  left: 8vw;
+}
+#author {
+  left: 47vw;
+}
+#datePosted  {
+  left: 62vw;
+}
+#url {
+  left: 78vw;
+}
