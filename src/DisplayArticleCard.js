@@ -36,12 +36,7 @@ import Paper from '@mui/material/Paper';
 
 
 export default function DisplayArticleCard(props) {
-  const {points, title, author, createdAt, url, openUrl, tags} = props
-
-  const goToLink = () => {
-    return console.log('Open')
-    // window.open(url);
-  }
+  const {points, title, author, createdAt, url, tags} = props
 
   return (
     <TableContainer component={Paper} onClick={() => {window.open(url)}}>

@@ -24,7 +24,6 @@ function ListArticles (props) {
         url={item.url}
         title={item.title}
         tags={item._tags}
-        openUrl={console.log("url opened")}
         />
       })}
       </ol>
