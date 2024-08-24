@@ -36,20 +36,15 @@ import Paper from '@mui/material/Paper';
 
 
 export default function DisplayArticleCard(props) {
-  const {points, title, author, createdAt, url, openUrl, tags} = props
-
-  const goToLink = () => {
-    return console.log('Open')
-    // window.open(url);
-  }
+  const {points, title, author, createdAt, url, tags} = props
 
   return (
-    <TableContainer component={Paper}>
+    <TableContainer component={Paper} onClick={() => {window.open(url)}}>
       <Table sx={{ minWidth: 650 }} aria-label="simple table">
         <TableHead>
           <TableRow>
             <TableCell sx={{ width: 50 }}>{points}</TableCell>
-            <TableCell sx={{ width: 450, fontWeight: 'bold' }} onclick={() => openUrl} align="left">{title}</TableCell>
+            <TableCell sx={{ width: 450, fontWeight: 'bold' }} align="left">{title}</TableCell>
             <TableCell sx={{ width: 150 }} align="left">{author}</TableCell>
             <TableCell sx={{ width: 150 }} align="left">{createdAt}</TableCell>
             <TableCell sx={{ width: 250, maxWidth: 250, wordWrap: 'break-word', color: 'gray' }} align="left">{url}</TableCell>
