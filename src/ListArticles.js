@@ -9,7 +9,7 @@ function ListArticles (props) {
   return (
     <div id="main">
       <div id="header">
-        <p id="points">Points</p>
+        <p id="points">Score</p>
         <p id="title">Title</p>
         <p id="author">Author</p>
         <p id="datePosted">Date Posted</p>
@@ -24,6 +24,7 @@ function ListArticles (props) {
         url={item.url}
         title={item.title}
         tags={item._tags}
+        openUrl={console.log("url opened")}
         />
       })}
       </ol>
