@@ -8,6 +8,13 @@ function ListArticles (props) {
 
   return (
     <div id="main">
+      <div id="header">
+        <p id="points">Score</p>
+        <p id="title">Title</p>
+        <p id="author">Author</p>
+        <p id="datePosted">Date Posted</p>
+        <p id="url">URL</p>
+      </div>
       <ol>{articles.map((item, index) => {
         return <DisplayArticleCard
         key={index}
@@ -17,6 +24,7 @@ function ListArticles (props) {
         url={item.url}
         title={item.title}
         tags={item._tags}
+        openUrl={console.log("url opened")}
         />
       })}
       </ol>
