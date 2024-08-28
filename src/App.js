@@ -2,10 +2,12 @@ import logo from './logo.svg';
 import './App.css';
 import React, { useState, useEffect} from 'react';
 import ListArticles from './ListArticles';
+import SearchForm from './SearchForm';
 
 function App() {
 
   const [articles, setArticles] = useState([])
+  const [filteredArticles, setFilteredArticles] = useState([])
   const [searchTerm, setSearch] = useState('')
 
   useEffect(() => {
@@ -36,16 +38,27 @@ function App() {
     }
   }
 
+  const handleSubmit = (e) => {
+    e.preventDefault()
+    console.log("Submit")
+    fetch(`https://hn.algolia.com/api/v1/search?query=${searchTerm}`)
+        .then(response => {
+          return response.json()
+       }).then(arrayOfArticles => setArticles(arrayOfArticles.hits))
+       .catch(error => console.error('Error fetching users:', error));
+  }
+
 
   return (
     <div className="App">
       <header className="App-header">
-        <form>
+        <SearchForm searchTerm={searchTerm} handleChange={handleChange} articles={articles} handleSubmit={handleSubmit}/>
+        {/* <form>
           <input type='text' value={searchTerm} onChange={handleChange} placeholder='search by tag, date, author, or title'></input>
-        </form>
+        </form> */}
       {
-        searchTerm != "" ?
-        <ListArticles articles={articles.filter(filterSearch())}/> :
+        // searchTerm != "" ?
+        // <ListArticles articles={articles.filter(filterSearch())}/> :
         <ListArticles articles={articles}/>
       }
       </header>
